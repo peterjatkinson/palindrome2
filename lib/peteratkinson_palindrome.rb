@@ -1,18 +1,26 @@
 # frozen_string_literal: true
 
-require_relative "peteratkinson_palindrome/version"
+require "peteratkinson_palindrome/version"
+
+module PeteratkinsonPalindrome
+
+ # Returns true for a palindrome, false otherwise.
+ def palindrome?
+  processed_content == processed_content.reverse
+end
+
+private
+
+  # Returns content for palindrome testing.
+  def processed_content
+    to_s.scan(/[a-z0-9]/i).join.downcase
+  end
+end
 
 class String
+  include PeteratkinsonPalindrome
+end
 
-  # Returns true for a palindrome, false otherwise.
-  def palindrome?
-    processed_content == processed_content.reverse
-  end
-
-  private
-
-    # Returns content for palindrome testing.
-    def processed_content
-      scan(/[a-z]/i).join.downcase
-    end
+class Integer
+  include PeteratkinsonPalindrome
 end
