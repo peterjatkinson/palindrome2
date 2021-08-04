@@ -27,4 +27,8 @@ class PeteratkinsonPalindromeTest < Minitest::Test
     assert 12321.palindrome?
   end
 
+  def test_empty_non_palindrome
+    refute " ".palindrome?
+    refute "".palindrome?
+  end
 end
